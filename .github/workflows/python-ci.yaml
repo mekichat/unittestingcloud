@@ -3,11 +3,11 @@ name: Python CI
 on:
    push:
      branches:
-       - main 
+       - master 
     
    pull_request:
      branches:
-       - main
+       - master
 
 jobs:
   test:        
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1 clone our repo
+      # Step 1 clone our repo ###
 
       - name: Checkout repository
         uses: actions/checkout@v4
