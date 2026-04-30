@@ -57,7 +57,7 @@ jobs:
           echo "tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
 
       # Step 9
-      - name: Debug token presence
+      - name: Debug token presence and added token ti GIT Actions
         run: |
           if [ -z "${{ secrets.DOCKERHUB_TOKEN }}" ]; then
             echo "TOKEN IS EMPTY"
