@@ -56,6 +56,6 @@ jobs:
           IMAGE_TAG=$(echo "${{ github.sha }}-${{ github.run_id }}" | sha256sum | cut -d " " -f 1)
           echo "tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-      # Step 9
-      - name: Log in to Docker hub
+      # Step 9 
+      - name: Log in to Docker hub after token is created
         run: echo "${{secrets.DOCKERHUB_TOKEN}}" | docker login -u meki2026 --password-stdin
