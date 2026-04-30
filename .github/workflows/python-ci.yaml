@@ -68,5 +68,20 @@ jobs:
 
       # Step 10
       - name: Log in to Docker hub after token is created and able to login to docker using existing password
-        run: echo "${{secrets.DOCKERHUB_TOKEN}}" | docker login -u meki2026 --password-stdin  
+        run: echo "${{secrets.DOCKERHUB_TOKEN}}" | docker login -u meki2026 --password-stdin
+
+      # Step 11  
+      - name: Build Docker Image
+        run: docker build -t meki2026/python-unit-testing-demo:latest .
+
+      - name: Build Docker Image with unique sha
+        run: docker build -t meki2026/python-unit-testing-demo:${{steps.image_tag.outputs.tag}} .
+
+      # Step 12
+      - name: Push latest tag to Docker hub
+        run: docker push meki2026/python-unit-testing-demo:latest
+
+      # Step 13      
+      - name: Push unique sha tag to Docker hub
+        run: docker push meki2026/python-unit-testing-demo:${{steps.image_tag.outputs.tag}} 
       
