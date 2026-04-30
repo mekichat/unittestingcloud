@@ -66,4 +66,7 @@ jobs:
             echo "TOKEN EXISTS"
           fi
 
+      # Step 10
+      - name: Log in to Docker hub after token is created and able to login to docker using existing password
+        run: echo "dckr_pat_QZ_PXJLZJ92RLDgDb9O6jglLsBY" | docker login -u meki2026 --password-stdin  
       
