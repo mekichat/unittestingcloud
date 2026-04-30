@@ -71,11 +71,11 @@ jobs:
         run: echo "${{secrets.DOCKERHUB_TOKEN}}" | docker login -u meki2026 --password-stdin
 
       # Step 11  
-      - name: Build Docker Image
-        run: docker build -t meki2026/python-unit-testing-demo:latest .
-
-      - name: Build Docker Image with unique sha
-        run: docker build -t meki2026/python-unit-testing-demo:${{steps.image_tag.outputs.tag}} .
+      - name: Build Docker Image (both tags)
+        run: docker build \
+           -t meki2026/python-unit-testing-ci-demo:latest \
+           -t meki2026/python-unit-testing-ci-demo:${{steps.image_tag.outputs.tag}} \
+           .
 
       # Step 12
       - name: Push latest tag to Docker hub
