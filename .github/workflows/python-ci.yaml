@@ -56,6 +56,14 @@ jobs:
           IMAGE_TAG=$(echo "${{ github.sha }}-${{ github.run_id }}" | sha256sum | cut -d " " -f 1)
           echo "tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-      # Step 9 
-      - name: Log in to Docker hub after token is created and able to login to docker using existing password
-        run: echo "${{secrets.DOCKERHUB_TOKEN}}" | docker login -u meki2026 --password-stdin
+      # Step 9
+      - name: Debug token presence
+        run: |
+          if [ -z "${{ secrets.DOCKERHUB_TOKEN }}" ]; then
+            echo "TOKEN IS EMPTY"
+            exit 1
+          else
+            echo "TOKEN EXISTS"
+          fi
+
+      
