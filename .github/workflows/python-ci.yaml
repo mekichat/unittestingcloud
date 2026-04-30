@@ -57,5 +57,5 @@ jobs:
           echo "tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
 
       # Step 9 
-      - name: Log in to Docker hub after token is created
+      - name: Log in to Docker hub after token is created and able to login to docker using existing password
         run: echo "${{secrets.DOCKERHUB_TOKEN}}" | docker login -u meki2026 --password-stdin
